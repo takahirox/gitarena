@@ -1,0 +1,15 @@
+import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import { git } from '../src/adapters/git.js';
+const repository = await mkdtemp(path.join(os.tmpdir(), 'gitarena-counter-'));
+const source = await readFile(new URL('./counter/server.js', import.meta.url), 'utf8');
+await git(['init', repository]);
+await git(['-C', repository, 'config', 'user.name', 'GitArena Example']);
+await git(['-C', repository, 'config', 'user.email', 'example@localhost']);
+await writeFile(path.join(repository, 'server.cjs'), source);
+await git(['-C', repository, 'add', '.']);
+await git(['-C', repository, 'commit', '-m', 'Add first counter']);
+await writeFile(path.join(repository, 'server.cjs'), source.replace("const version = 'First'", "const version = 'Second'"));
+await git(['-C', repository, 'commit', '-am', 'Update counter appearance']);
+console.log(`Example repository: ${repository}\nLeft ref: HEAD~1\nRight ref: HEAD\nInstall: true\nStart: node server.cjs\nApp port: 3000\nImage: node:22-bookworm-slim\n\nRemove this generated repository manually when finished.`);

@@ -1,0 +1,371 @@
+:root {
+  font:15px/1.5 system-ui,-apple-system,sans-serif;
+  color:#243133;
+  background:#f4f5f2;
+  --accent:#176b55;
+  --border:#d6ddd7
+}
+* {
+  box-sizing:border-box
+}
+body {
+  margin:0
+}
+button,input,textarea {
+  font:inherit
+}
+button {
+  cursor:pointer;
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:7px;
+  padding:9px 14px;
+  color:inherit
+}
+button:hover {
+  border-color:var(--accent)
+}
+button:disabled {
+  opacity:.45;
+  cursor:default
+}
+button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible {
+  outline:3px solid #72bba5;
+  outline-offset:2px
+}
+.primary {
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent)
+}
+header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:20px 30px;
+  border-bottom:1px solid var(--border);
+  background:#fff
+}
+.brand {
+  text-decoration:none;
+  color:#243133;
+  font-size:25px;
+  font-weight:750;
+  letter-spacing:-1px
+}
+.brand span {
+  display:block;
+  letter-spacing:2px;
+  font-size:9px;
+  color:#657571
+}
+nav {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap
+}
+main {
+  padding:0 24px
+}
+.status-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  min-height:65px;
+  color:#657571;
+  font-size:13px
+}
+#mode {
+  font-size:10px;
+  letter-spacing:1.5px;
+  white-space:nowrap;
+  color:var(--accent)
+}
+#empty {
+  max-width:750px;
+  margin:10vh auto;
+  padding:32px
+}
+.eyebrow {
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--accent)
+}
+h1 {
+  font-size:clamp(40px,6vw,74px);
+  font-weight:550;
+  letter-spacing:-3px;
+  line-height:1.08;
+  margin:24px 0
+}
+#empty>p:not(.eyebrow) {
+  max-width:450px;
+  color:#657571;
+  margin-bottom:30px
+}
+.panes {
+  display:flex;
+  gap:14px
+}
+.pane {
+  flex:1;
+  min-width:0;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:9px;
+  overflow:hidden
+}
+.pane-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  padding:12px;
+  border-bottom:1px solid var(--border);
+  min-height:62px
+}
+.pane-header>div {
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap
+}
+.pane-header strong {
+  font-size:13px
+}
+.side-label {
+  display:inline-block;
+  padding:2px 7px;
+  background:#edf4ef;
+  color:var(--accent);
+  margin-right:8px;
+  font-size:12px;
+  border-radius:4px
+}
+.sha {
+  font-size:11px;
+  color:#657571;
+  margin-left:7px
+}
+.annotate {
+  font-size:12px;
+  white-space:nowrap;
+  padding:6px 8px
+}
+iframe {
+  width:100%;
+  height:calc(100vh - 240px);
+  min-height:280px;
+  display:block;
+  border:0;
+  background:#fff
+}
+.hint {
+  font-size:12px;
+  color:#657571
+}
+pre {
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  background:#fff0ec;
+  color:#8a3526;
+  border:1px solid #edc7bd;
+  border-radius:8px;
+  padding:16px;
+  max-height:220px;
+  overflow:auto
+}
+dialog {
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:24px;
+  width:min(620px,95vw);
+  max-height:92vh;
+  overflow:auto;
+  box-shadow:0 20px 90px #1233;
+  color:inherit
+}
+dialog::backdrop {
+  background:#172f2a80
+}
+.dialog-heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+  margin-bottom:18px
+}
+.dialog-heading h2 {
+  font-size:21px;
+  margin:0
+}
+.dialog-heading p {
+  font-size:12px;
+  color:#657571;
+  margin:4px 0
+}
+.dialog-heading>button {
+  padding:2px 10px;
+  font-size:22px
+}
+label {
+  display:block;
+  font-size:13px;
+  margin:14px 0
+}
+input,textarea {
+  display:block;
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:9px;
+  margin-top:5px;
+  color:inherit;
+  background:#fff
+}
+textarea {
+  resize:vertical
+}
+.fields {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 14px
+}
+details {
+  margin:16px 0
+}
+summary {
+  cursor:pointer;
+  color:var(--accent)
+}
+#editor {
+  width:min(1000px,95vw)
+}
+#tools {
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-bottom:12px
+}
+button[aria-pressed=true] {
+  background:#e2f1e8;
+  border-color:var(--accent);
+  color:var(--accent)
+}
+#snapshot {
+  position:relative;
+  line-height:0;
+  background:#eff2ef;
+  max-width:100%;
+  user-select:none
+}
+#snapshot img {
+  width:100%;
+  height:auto;
+  display:block
+}
+#drawing {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  touch-action:none;
+  cursor:crosshair
+}
+#drawing.readonly {
+  pointer-events:none
+}
+#drawing * {
+  fill:none;
+  stroke:#e53c48;
+  stroke-width:3;
+  vector-effect:non-scaling-stroke;
+  stroke-linecap:round;
+  stroke-linejoin:round
+}
+.editor-footer {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px
+}
+#save-status {
+  font-size:13px;
+  color:var(--accent)
+}
+#feedback-list {
+  display:grid;
+  gap:10px
+}
+.feedback-item {
+  text-align:left;
+  width:100%;
+  overflow-wrap:anywhere
+}
+.feedback-item strong,.feedback-item small {
+  display:block
+}
+.feedback-item small {
+  color:#657571
+}
+body.swapped #right-pane {
+  order:-1
+}
+[hidden] {
+  display:none!important
+}
+@media(max-width:800px) {
+  header {
+    padding:14px;
+    align-items:flex-start;
+    flex-direction:column
+  }
+  main {
+    padding:0 12px
+  }
+  .sha {
+    display:block;
+    margin-left:28px
+  }
+  .pane-header {
+    align-items:flex-start;
+    flex-direction:column
+  }
+  .panes {
+    gap:8px
+  }
+  iframe {
+    height:calc(100vh - 320px);
+    min-height:220px
+  }
+  .status-row {
+    min-height:70px
+  }
+  #empty {
+    margin:4vh auto;
+    padding:20px
+  }
+  #mode {
+    font-size:8px
+  }
+}
+@media(prefers-reduced-motion:no-preference) {
+  button {
+    transition:background .15s,border-color .15s
+  }
+}
+#snapshot {
+  width:fit-content;
+  margin:0 auto
+}
+#snapshot img {
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:42vh
+}
+.dialog-heading p {
+  overflow-wrap:anywhere
+}

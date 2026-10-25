@@ -1,0 +1,16 @@
+{
+  "name": "gitarena",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/*.test.js",
+    "test:ui": "playwright test",
+    "test:docker": "GITARENA_DOCKER_TEST=1 node --test test/docker.test.js",
+    "check": "node --check src/server.js && node --check public/app.js && git diff --check",
+    "example": "node examples/create-repository.js"
+  },
+  "devDependencies": { "@playwright/test": "^1.64.1" }
+}
