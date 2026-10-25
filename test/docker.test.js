@@ -1,13 +1,27 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { writeFile, readFile, readdir } from 'node:fs/promises';
+import { mkdir, writeFile, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { DockerWeb } from '../src/adapters/docker-web.js';
 import { git } from '../src/adapters/git.js';
 import { fixture, manager, settled } from './helpers.js';
 
-test('real Docker: concurrent commits, limits, writable isolation, stop, failed install, blocked embedding, timeout and cancellation', { skip: !process.env.GITARENA_DOCKER_TEST, timeout: 120000 }, async t => {
+test('real Docker: npm executable launches concurrent commits, limits, writable isolation, stop, failed install, blocked embedding, timeout and cancellation', { skip: !process.env.GITARENA_DOCKER_TEST, timeout: 120000 }, async t => {
   const { root, repo, config } = await fixture(t);
+  // Install a local CLI offline so npm start must execute a file from /app.
+  await mkdir(path.join(repo, 'preview-cli'));
+  await writeFile(path.join(repo, 'preview-cli/package.json'), JSON.stringify({ name: 'preview-cli', version: '1.0.0', bin: { preview: 'cli.cjs' } }));
+  await writeFile(path.join(repo, 'preview-cli/cli.cjs'), '#!/usr/bin/env node\nrequire(process.cwd() + "/server.cjs");\n');
+  await writeFile(path.join(repo, 'package.json'), JSON.stringify({ name: 'preview-app', version: '1.0.0', scripts: { start: 'preview' }, dependencies: { 'preview-cli': 'file:preview-cli' } }));
+  await writeFile(path.join(repo, 'package-lock.json'), JSON.stringify({
+    name: 'preview-app', version: '1.0.0', lockfileVersion: 3, requires: true,
+    packages: {
+      '': { name: 'preview-app', version: '1.0.0', dependencies: { 'preview-cli': 'file:preview-cli' } },
+      'node_modules/preview-cli': { resolved: 'preview-cli', link: true },
+      'preview-cli': { version: '1.0.0', bin: { preview: 'cli.cjs' } },
+    },
+  }));
+  config.install = 'npm ci --offline --no-audit --no-fund'; config.start = 'npm start';
   const source = await readFile(new URL('../examples/counter/server.js', import.meta.url), 'utf8');
   await writeFile(path.join(repo, 'server.cjs'), source);
   await git(['-C', repo, 'add', '.']); await git(['-C', repo, 'commit', '-m', 'First web app']);

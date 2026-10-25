@@ -18,7 +18,7 @@ export class DockerWeb {
       '--user', '1000:1000', '--pids-limit', '256', '--memory', '1g', '--memory-swap', '1g', '--cpus', '1',
       '--stop-timeout', '3', '--log-driver', 'local', '--log-opt', 'max-size=1m', '--log-opt', 'max-file=2',
       '--mount', `type=bind,src=${target.worktree},dst=/source,readonly`,
-      '--tmpfs', '/app:rw,nosuid,nodev,size=512m,uid=1000,gid=1000',
+      '--tmpfs', '/app:rw,exec,nosuid,nodev,size=512m,uid=1000,gid=1000',
       '--tmpfs', '/tmp:rw,nosuid,nodev,size=128m,uid=1000,gid=1000',
       '--workdir', '/app', '--env', 'HOME=/tmp', '--env', 'HOST=0.0.0.0', '--env', `PORT=${config.port}`,
       '--publish', `127.0.0.1:${config[`${side}Port`] || ''}:${config.port}`,
