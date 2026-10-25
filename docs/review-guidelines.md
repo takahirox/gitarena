@@ -19,7 +19,7 @@ Check correctness, consistency with the existing repository, and documentation a
 
 Verify that the validation evidence is sufficient for the changed files and actual tooling. Check the reported results, including failures, skipped checks, and unperformed checks with their reasons. Do not accept an unperformed check as passing.
 
-There are currently no configured build/test/lint commands or application runtime in this repository. For templates and documentation, inspect Markdown and template syntax, links, whitespace, and consistency; use available tooling such as `git diff --check`. Do not invent commands, add tooling, or require unrelated runtime suites, hardware/device checks, or deployed-site verification merely for documentation changes.
+For application changes, use the relevant [documented checks](../README.md#validation), including real Docker launch/cleanup tests for lifecycle changes and browser tests for interaction/capture changes. For templates and documentation, inspect Markdown and template syntax, links, whitespace, and consistency; use available tooling such as `git diff --check`. Do not add tooling or require unrelated runtime suites, hardware/device checks, or deployed-site verification merely for documentation changes.
 
 Require mandatory pre-merge acceptance to be achievable and verifiable before merge. Check that optional validation remains optional. Human confirmation, physical-device testing, subjective evaluation, or external approval should be required only when necessary for the actual Issue, with a reason and expected result.
 

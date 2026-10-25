@@ -26,7 +26,7 @@ Read the source Issue and inspect the current repository before editing. Use the
 
 Check both directions: leave no required work missing, and add no unjustified scope or complexity. Avoid unnecessary abstractions, speculative extensibility, unrelated refactoring, frameworks/subsystems, or extra policies/configuration without a demonstrated need tied to the Issue. Added complexity is not automatically beneficial. Preserve justified existing conventions; simplicity does not excuse omitted requirements or necessary validation.
 
-Choose checks appropriate to the changed files and actual repository tooling. The repository currently has no application files or configured build, test, lint, or runtime commands. Do not invent commands or add dependencies, CI, or application/tooling setup merely to document a process.
+Choose checks appropriate to the changed files and actual repository tooling. Application checks are documented in [README.md](../README.md): `npm test`, `npm run test:ui`, `npm run test:docker`, and `npm run check`. Docker tests require a running daemon and the pre-pulled runtime image; browser tests require Playwright Chromium. Report any skipped suite and its reason. Do not add dependencies, CI, or tooling setup merely to document a process.
 
 For templates and documentation, inspect Markdown structure, template syntax, links, whitespace, and consistency. Git's `git diff --check` checks whitespace in the diff. No unrelated runtime suite, hardware/device check, or deployed-site verification is required for a documentation-only change unless the actual Issue establishes a need.
 
