@@ -15,6 +15,8 @@ Prefer the smallest coherent design that fully satisfies the Issue. Added comple
 
 Check correctness, consistency with the existing repository, and documentation affected by the change.
 
+Review applicable interface changes against the [UI/UX principles](../README.md#uiux).
+
 ## Check validation and timing
 
 Verify that the validation evidence is sufficient for the changed files and actual tooling. Check the reported results, including failures, skipped checks, and unperformed checks with their reasons. Do not accept an unperformed check as passing.
