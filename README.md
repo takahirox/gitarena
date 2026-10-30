@@ -57,6 +57,16 @@ Containers have outbound networking for dependency installation and app requests
 
 For emergency cleanup while the server is stopped, inspect `sessions/*.json` and the owned container names `gitarena-<data-directory-hash>-<session-id>-left/right`. Remove only those two containers, then restart normally. Saved feedback remains available. A stale `server.lock` is recovered automatically when its recorded process no longer exists; if the PID was reused, verify that process before manually removing the lock.
 
+## UI/UX
+
+Apply these principles to GitArena's comparison view, launch configuration, capture and annotation editor, and feedback library:
+
+1. **Keep it simple.** Show only necessary information and actions; avoid unnecessary UI elements.
+2. **Show, don't tell.** Prefer layout, spacing and visual hierarchy over explanatory labels or prose to communicate structure.
+3. **Intuitive and predictable.** Keep appearance and behavior consistent with user expectations; don't interrupt the user's work.
+
+Preserve necessary control labels, accessible names and other accessibility information, error messages, and information needed to use the interface. Simplification must preserve meaningful consent (including the browser sharing picker), destructive-action safeguards, necessary warnings, and necessary user decisions.
+
 ## Validation
 
 ```sh
