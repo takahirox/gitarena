@@ -28,6 +28,8 @@ Check both directions: leave no required work missing, and add no unjustified sc
 
 Choose checks appropriate to the changed files and actual repository tooling. Application checks are documented in [README.md](../README.md): `npm test`, `npm run test:ui`, `npm run test:docker`, and `npm run check`. Docker tests require a running daemon and the pre-pulled runtime image; browser tests require Playwright Chromium. Report any skipped suite and its reason. Do not add dependencies, CI, or tooling setup merely to document a process.
 
+Apply the [test and CI performance principles](testing-ci-principles.md) when choosing test layers, combinations, and execution structure, preserving required regression confidence.
+
 For templates and documentation, inspect Markdown structure, template syntax, links, whitespace, and consistency. Git's `git diff --check` checks whitespace in the diff. No unrelated runtime suite, hardware/device check, or deployed-site verification is required for a documentation-only change unless the actual Issue establishes a need.
 
 ## 3. Open a PR for the Issue
