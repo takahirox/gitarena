@@ -85,3 +85,4 @@ Follow the [development flow](docs/development-flow.md), [review guidelines](doc
 
 - [Issue template](.github/ISSUE_TEMPLATE/issue.md)
 - [Pull request template](.github/pull_request_template.md)
+- [Test and CI performance principles](docs/testing-ci-principles.md)
