@@ -17,7 +17,7 @@ Describe what should be true when this Issue is resolved.
 
 ## Context and reproduction
 
-Add relevant context, examples, logs, or related Issues. Include reproduction steps and actual versus expected behavior where applicable.
+Add relevant context, examples, logs, or related Issues. Include reproduction steps, the affected revision, and actual versus expected behavior where applicable. For a defect discovered after merge, follow the [linked-Issue guidance](https://github.com/takahirox/gitarena/blob/main/docs/development-flow.md#5-merge-and-report-follow-up).
 
 ## Pre-merge acceptance criteria
 
@@ -34,3 +34,5 @@ List useful but nonmandatory checks separately, or state "None."
 ## Required post-merge verification
 
 Record genuinely necessary checks possible only after merge, or state "None." Do not add these routinely. Keep them pending until performed; pre-merge validation does not prove publication or deployment succeeded. See the [review guidance](https://github.com/takahirox/gitarena/blob/main/docs/review-guidelines.md#check-validation-and-timing).
+
+These checks follow successful merge and closure of the implemented Issue; closure does not claim they passed. Record evidence and track discovered defects under the [follow-up guidance](https://github.com/takahirox/gitarena/blob/main/docs/development-flow.md#5-merge-and-report-follow-up).
