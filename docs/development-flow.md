@@ -1,6 +1,6 @@
 # Development flow
 
-The default flow for gitarena is Issue → implementation → PR → review → revision as needed → merge into `main`. Perform post-merge verification only when the Issue requires it. AI agents and human contributors follow the same guidance.
+The default flow for gitarena is Issue → implementation → PR → review → revision as needed → merge into `main` and close the source Issue → required post-merge verification, if any. Perform post-merge verification only when the Issue requires it. AI agents and human contributors follow the same guidance.
 
 ## Collaboration language
 
@@ -30,13 +30,13 @@ Choose checks appropriate to the changed files and actual repository tooling. Ap
 
 Apply the [test and CI performance principles](testing-ci-principles.md) when choosing test layers, combinations, and execution structure, preserving required regression confidence.
 
-For templates and documentation, inspect Markdown structure, template syntax, links, whitespace, and consistency. Git's `git diff --check` checks whitespace in the diff. No unrelated runtime suite, hardware/device check, or deployed-site verification is required for a documentation-only change unless the actual Issue establishes a need.
+For templates and documentation, inspect Markdown structure, template syntax, links, whitespace, and consistency. Git's `git diff --check` checks whitespace in the diff. No unrelated runtime suite, manual acceptance, hardware/device check, heavyweight model download, or deployed-site verification is required for a documentation-only change unless the actual Issue establishes a need.
 
 ## 3. Open a PR for the Issue
 
 Use the [PR template](../.github/pull_request_template.md). Explain the problem, resulting behavior, focused changes, related Issues, and validation actually performed. Report failures, skipped checks, and unperformed checks accurately, with reasons.
 
-Claim to close an Issue only when the PR fully addresses it. Clearly identify an intentionally partial implementation and leave its source Issue open. Record required post-merge verification separately as pending until performed; pending post-merge checks alone do not make an otherwise complete implementation partial.
+Use the normal `Closes #N` reference when the PR fully implements the Issue and satisfies applicable mandatory pre-merge acceptance. Preserve it even when required post-merge-only verification is pending. Clearly identify an intentionally partial implementation, state its remaining scope, and leave its source Issue open without an automatic closing reference. Record required post-merge verification separately as pending until performed; pending post-merge checks alone do not make an otherwise complete implementation partial.
 
 ## 4. Review and revise
 
@@ -46,6 +46,10 @@ Request fixes for agent-fixable findings and review the updated PR again. If gen
 
 ## 5. Merge and report follow-up
 
-Approve and merge into `main` through the authorized workflow when the implementation is complete, mandatory pre-merge checks are sufficient and pass, and no blocking review findings remain.
+Approve and merge into `main` through the authorized workflow when the implementation is complete, mandatory pre-merge checks are sufficient and pass, and no blocking review findings remain. Missing implementation, mandatory pre-merge tests, required protections, and genuinely necessary pre-merge human acceptance remain blockers; this lifecycle does not bypass them.
 
-Perform any recorded required post-merge verification after merge. Report actual results, failures, and needed follow-up; keep unperformed checks pending. Pre-merge validation does not prove deployment or publication succeeded. Checks possible only after merge do not block pre-merge approval.
+Close the original Issue after successful merge, then perform any recorded required post-merge verification. Record the affected revision, checks, actual results, and evidence in the merged PR, closed Issue, or a linked validation report. Report unperformed, pending, or environment-blocked checks with their reasons; Issue closure does not claim those checks passed. Pre-merge validation does not prove deployment or publication succeeded. An unavailable test environment alone is not evidence of a product defect.
+
+If verification reveals an actual defect, first check for an existing equivalent Issue and use it if found; otherwise create a new linked Issue. Include reproduction steps, the affected revision, expected and actual behavior, and links to the original Issue and PR. Do not keep or reopen the original Issue solely for post-merge follow-up.
+
+This lifecycle supersedes older instructions to keep an implemented Issue open solely until post-merge verification finishes. Preserve historical test outcomes and evidence without rewriting them. Review must not remove `Closes #N`, keep the source Issue open, or withhold approval solely because a post-merge-only check is pending: publication restoring the closing reference must not trigger a repeated Review → Fix → Publish → Review loop.

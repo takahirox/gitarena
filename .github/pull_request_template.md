@@ -6,7 +6,7 @@ Explain the problem and the focused changes that address it.
 
 ## Outcome
 
-Describe the resulting behavior, including before/after examples when useful. Explain any intentionally partial scope; claim to close an Issue only when it is fully addressed.
+Describe the resulting behavior, including before/after examples when useful. Explain any intentionally partial scope and what remains; leave its source Issue open without an automatic closing reference. Pending post-merge-only verification does not make an otherwise complete implementation partial.
 
 ## Validation
 
@@ -14,8 +14,10 @@ List checks actually performed and their results. Report failures, skipped check
 
 ## Related Issues
 
-Link the source Issue and other relevant Issues. Use a closing reference only for an Issue this PR fully resolves.
+Link the source Issue and other relevant Issues. Use and preserve `Closes #N` when this PR fully implements the Issue and satisfies applicable mandatory pre-merge acceptance, even if post-merge-only verification is pending.
 
 ## Required post-merge verification
 
 List genuinely necessary checks possible only after merge and their current status, or state "None." Keep pending checks separate from completed pre-merge validation; do not claim they passed until performed.
+
+After successful merge and Issue closure, record evidence and track actual defects under the [follow-up guidance](https://github.com/takahirox/gitarena/blob/main/docs/development-flow.md#5-merge-and-report-follow-up).
